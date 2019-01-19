@@ -121,15 +121,14 @@ rm -R NewTestFolder
 ### Data storage
 All user data should be stored on the data server - not in your home folder (your initial starting place when you login). The home folder is on the front-end that doesn't have a lot of space, which is why big data must be kept on the data servers.
 
-Your space on LS2 is kept at `/projects/fs1/username/` and you get there by doing:
+Your space on LSENS2 is kept at `/projects/fs1/username/` and you get there by doing:
 
 ```
-# home folder
 ls ~
-## data server (your folder) 
 me=`whoami`
 cd /projects/fs1/$me/
 ```
+
 All steps explained:
 - **'~'** is an inbuilt variable that points to your home directory.
 - **'me=`whoami`'** creates a local variable with the output of the whoami (speak 'who am I') program which returns our username (stefanl for me).

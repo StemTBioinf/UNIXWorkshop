@@ -47,74 +47,74 @@ pwd
 ```
 
 To make a new folder do:
-```{bash, eval = FALSE}
+```
 mkdir NewTestFolder
 ```
 
 To make a new empty file do:
-```{bash, eval = FALSE}
+```
 touch NewTestFile
 ```
 
 To list all files and folders do:
-```{bash, eval = FALSE}
+```
 ls
 ```
 
 To copy the file you have made into the folder you made do:
-```{bash, eval = FALSE}
+```
 cp NewTestFile NewTestFolder/NewTestFile_copy
 ```
 
 To go into the new folder do:
-```{bash, eval = FALSE}
+```
 cd NewTestFolder
 ```
 
 or to use the full path:
-```{bash, eval = FALSE}
+```
 cd /home/username/NewTestFolder
 ```
 
 Oops - this did not work - right? You need to change the 'username' to your actual user name.
 
 You do not know your username?
-```{bash, eval = FALSE}
+```
 whoami
 ```
 
 Will tell you your username and
-```{bash, eval = FALSE}
+```
 me=`whoami`
 ``` 
 
 will store this user name in a BASH variable that we can use now.
-```{bash, eval = FALSE}
+```
 cd /home/$me/NewTestFolder
 ```
 
 To rename a file use the move command `mv` (yes, it's strange):
-```{bash, eval = FALSE}
+```
 mv NewTestFile_copy NewTestFile_copy_version2
 ```
 
 To actually move the file one level up do:
-```{bash, eval = FALSE}
+```
 mv NewTestFile_copy_version2 ../
 ```
 
 To go back one level and meet your file do:
-```{bash, eval = FALSE}
+```
 cd ../
 ```
 
 To delete the file you just moved do:
-```{bash, eval = FALSE}
+```
 rm NewTestFile_copy_version2
 ```
 
 To remove the folder you made do:
-```{bash, eval = FALSE}
+```
 rm -R NewTestFolder
 ```
 
@@ -142,16 +142,16 @@ Typing `/projects/fs1/$me/` everytime you want to go there is a pain, and we can
 
 In the Terminal use the 'ln' command to create a link from '/projects/fs1/username/no_backup' to '~/NAS'. Do this by:
 
-```{bash, eval = FALSE}
+```
 ln -s /projects/fs1/$me/ ~/NAS
 ```
 
 If you now type `ls` you will see the `NAS` folder there. You can now do:
-```{bash, eval = FALSE}
+```
 cd ~/NAS
 ```
 Rather than having to do:
-```{bash, eval = FALSE}
+```
 cd /projects/fs1/username
 ```
 Much nicer!
@@ -170,7 +170,7 @@ man "program name"
 
 All well programmed command line tools do also report a basic help if you use them in the wrong way - like without options at all. Try it:
 
-```{bash, eval = FALSE}
+```
 mkdir
 ```
 
@@ -181,23 +181,23 @@ mkdir --help
 ### Creating files / directories
 
 Go to your data server folder (if you aren't already there):
-```{bash, eval = FALSE}
+```
 cd ~/NAS
 ```
 Create a folder with the name 'TestFileCreation':
-```{bash, eval = FALSE}
+```
 mkdir TestFileCreation
 ```
 Go into the folder:
-```{bash, eval = FALSE}
+```
 cd TestFileCreation
 ```
 Then create a file named README.txt in the folder. The file should contain the string 'Here we play with files and folders': 
-```{bash, eval = FALSE}
+```
 echo 'Here we play with files and folders' > README.txt
 ```
 To look at the contents of a file from terminal you can use the `more` command:
-```{bash, eval = FALSE}
+```
 more README.txt
 ```
 
@@ -207,19 +207,19 @@ People use different versions of the same program, which means these programs ca
 
 To add 'git' to your session we need to find the available versions of git:
 
-```{bash, eval = FALSE}
+```
 module spider git
 ```
 When we have decided which version we want we call `module spider` on the specific version to see what requirements it has:
-```{bash, eval = FALSE}
+```
 module spider git/2.14.1
 ```
 You will see that it also needs `GCCcore/7.3.0` (a dependency). To load these modules so you can use them do:
-```{bash, eval = FALSE}
+```
 module load GCCcore/6.4.0 git/2.14.1
 ```
 `git` will now be available to use for this session, and you can check this by calling:
-```{bash, eval = FALSE}
+```
 git
 ```
 

@@ -123,7 +123,7 @@ All user data should be stored on the data server - not in your home folder (you
 
 Your space on LS2 is kept at `/projects/fs1/username/` and you get there by doing:
 
-```{bash, eval = FALSE  }
+```
 # home folder
 ls ~
 ## data server (your folder) 

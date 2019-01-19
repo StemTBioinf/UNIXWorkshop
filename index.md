@@ -173,7 +173,7 @@ All well programmed command line tools do also report a basic help if you use th
 mkdir
 ```
 
-```{bash }
+```
 mkdir --help
 ```
 

@@ -42,7 +42,7 @@ Open a terminal.
 
 ### Basic UNIX file structure
 To know where you are right now do:
-```{bash, eval = FALSE}
+```
 pwd
 ```
 To make a new folder do:

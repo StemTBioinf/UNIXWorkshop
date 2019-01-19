@@ -45,62 +45,74 @@ To know where you are right now do:
 ```
 pwd
 ```
+
 To make a new folder do:
 ```{bash, eval = FALSE}
 mkdir NewTestFolder
 ```
+
 To make a new empty file do:
 ```{bash, eval = FALSE}
 touch NewTestFile
 ```
+
 To list all files and folders do:
 ```{bash, eval = FALSE}
 ls
 ```
+
 To copy the file you have made into the folder you made do:
 ```{bash, eval = FALSE}
 cp NewTestFile NewTestFolder/NewTestFile_copy
 ```
+
 To go into the new folder do:
 ```{bash, eval = FALSE}
 cd NewTestFolder
 ```
+
 or to use the full path:
 ```{bash, eval = FALSE}
 cd /home/username/NewTestFolder
 ```
+
 Oops - this did not work - right? You need to change the 'username' to your actual user name.
 
 You do not know your username?
 ```{bash, eval = FALSE}
 whoami
 ```
+
 Will tell you your username and
 ```{bash, eval = FALSE}
 me=`whoami`
 ``` 
+
 will store this user name in a BASH variable that we can use now.
 ```{bash, eval = FALSE}
 cd /home/$me/NewTestFolder
 ```
-Nice - or?
 
 To rename a file use the move command `mv` (yes, it's strange):
 ```{bash, eval = FALSE}
 mv NewTestFile_copy NewTestFile_copy_version2
 ```
+
 To actually move the file one level up do:
 ```{bash, eval = FALSE}
 mv NewTestFile_copy_version2 ../
 ```
+
 To go back one level and meet your file do:
 ```{bash, eval = FALSE}
 cd ../
 ```
+
 To delete the file you just moved do:
 ```{bash, eval = FALSE}
 rm NewTestFile_copy_version2
 ```
+
 To remove the folder you made do:
 ```{bash, eval = FALSE}
 rm -R NewTestFolder

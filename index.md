@@ -165,7 +165,7 @@ Other very commonly used programs are `ls`, `touch`, `cp`, `mkdir`, `mv`, `rm`, 
 
 You can read up on what program does and how it works using:
 
-```{bash, eval = FALSE }
+```
 man "program name"
 ```
 
@@ -241,7 +241,7 @@ Aurora uses the [SLURM system](https://lunarc-documentation.readthedocs.io/en/la
 
 You have already loaded git, so use this to pull our test file which is an unsorted BAM file by using:
 
-```{bash, eval = FALSE }
+```
 cd ~/NAS/TestFileCreation
 mkdir git
 cd git
@@ -250,7 +250,7 @@ cd UnixCourseMaterial
 ```
 
 Do:
-```{bash, eval = FALSE }
+```
 ls
 ```
 To see the files there. You will see `UnsortedTestFile.bam`.
@@ -279,11 +279,11 @@ samtools sort -T $SNIC_TMP UnsortedTestFile.bam > SortedTestFile.bam
 ```
 Save this file as `sortbam.sh` in the same folder as where you have your bam file. Now try to queue it up using sbatch:
 
-```{bash, eval = FALSE }
+```
 sbatch sortbam.sh
 ```
 You can see all the jobs on the queue using:
-```{bash, eval = FALSE }
+```
 squeue
 ```
 
@@ -299,25 +299,25 @@ Fo this you will need to open and Terminal if you are on a Mac (Applications > U
 
 For terminal users the command you need to connect is:
 
-```{bash, eval = FALSE }
+```
 sftp -P 22220 username@aurora-ls2.lunarc.lu.se
 ```
 
 When you are in you go to your outbox/inbox as needed:
 
-```{bash, eval = FALSE }
+```
 cd inbox/username
 or
 cd outbox/username
 ```
 
 To put a file in the inbox use:
-```{bash, eval = FALSE }
+```
 put filename
 ```
 
 To get a file from the outbox do:
-```{bash, eval = FALSE }
+```
 get filename
 ```
 
@@ -338,7 +338,7 @@ If we are out of time you are welcome to try it on your own and drop by if there
 
 On aurora we store genome information in a special folder that is readable by all users:
 
-```{bash, eval=FALSE }
+```
 ls /projects/fs1/common/genome/lunarc/
 # e.g. gencode information mv19
 ls -lh /projects/fs1/common/genome/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf
@@ -443,14 +443,14 @@ You are of cause not limited to the usage of [awk](https://www.gnu.org/software/
 
 In Perl the awk call would look like that:
 
-```{bash, eval=FALSE }
+```
 perl -lane 'if ( $F[0] eq "chr4" and $F[2] eq "gene" and $F[3] < 19000002 and $F[4] > 10000002 ) { print } ' $fname > chr4_10000002_19000002.genes.gtf
 ```
 It is slower in Perl than using awk, but Perl is not known for it's speed, rather for it's string manipulation capabilities and regular expressions.
 
 Have you thought about the .log file? No - do that ;-)
 
-```{bash, eval=FALSE }
+```
 history | tail -n2 | head -n1 | perl -lane 'shift(@F); print join(" ", @F);' > ~/NAS/TestFileCreation/chr4_10000002_19000002.genes.gtf.log
 ```
 
@@ -495,7 +495,7 @@ I figured that the easiest is to use [basename](https://linux.die.net/man/1/base
 
 The solution I found uses a [bash for loop](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html) to iterate over all files found in the find call; stores the basename of this file in a variable and uses this variable to store the awk results. I could not make the log file work in a reasonable time frame (<2h). Even the first solution took me about 30 min.
 
-```{bash , eval=FALSE }
+```
 for f in $(find ~/lunarc/genomes/mouse/ -name '*.gtf' ); do bname=`basename $f`
  awk '{ if ( ($3 ~ /gene/ && ($1 == "chr4" || $1 == "4") ) && ($4 < 19000002 && $5 > 10000002 )) { print } }' $f > ~/NAS/TestFileCreation/${bname}
  done

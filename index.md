@@ -390,7 +390,7 @@ fname=~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotat
 awk '{ if ( ($3 == "gene" && $1 == "chr4") && ($4 < 19000002 && $5 > 10000002) ) {print}}' $fname > ~/NAS/TestFileCreation/chr4_10000002_19000002.genes.gtf
 ```
 
-You can do even more hardcode scripting, and those will go up on Piazza for you to look at.
+You can do even more hardcore scripting, and those will go up on Piazza for you to look at.
 
 ## Find - a very useful tool!
 
@@ -418,4 +418,4 @@ find *.bam
 
 # You made it!
 
-Practise makes perfect; go through what you have done here today in your own time to consolidate what your have learnt.
+Practise makes perfect; go through what you have done here today in your own time to consolidate what your have learnt. We will send out a link to a Piazza course for you to get some harder exercises so you can tackle them online together.

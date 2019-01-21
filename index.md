@@ -374,13 +374,23 @@ head ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotati
 
 Perfect - now you know how big these gtf files are and which internal structure they have. Sometimes you a want to extract information out of them quickly.
 
-Get all information regarding Gapdh out of the file (using grep) and put this information in a new 'Gapdh.gtf' file in your current folder. You can log this command in a file called 'Gapdh.gtf.log' so you can remind yourself of what you did:.
+### Finding stuff using `grep`
+
+Get all information regarding "Gapdh" out of the file (using grep) and put this information in a new 'Gapdh.gtf' file in your current folder. You can log this command in a file called 'Gapdh.gtf.log' so you can remind yourself of what you did:.
 
 ```
 cd ~/NAS/
 grep Gapdh ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf > Gapdh.gtf
 echo 'grep Gapdh ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf > Gapdh.gtf' > Gapdh.gtf.log
 ```
+`grep` will look over an entire file, but sometimes you want to look just within a specific column. For example, get all genes from chr4 between base positions 10000002 and 19000002 and store the results in a file:
+
+```
+fname=~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf
+awk '{ if ( ($3 == "gene" && $1 == "chr4") && ($4 < 19000002 && $5 > 10000002) ) {print}}' $fname > ~/NAS/TestFileCreation/chr4_10000002_19000002.genes.gtf
+```
+
+You can do even more hardcode scripting, and those will go up on Piazza for you to look at.
 
 ## Find - a very useful tool!
 

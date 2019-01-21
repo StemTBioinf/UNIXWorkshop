@@ -243,12 +243,12 @@ Aurora uses the [SLURM system](https://lunarc-documentation.readthedocs.io/en/la
 
 Lets get a small unsorted BAM file from the temp folder to work on:
 ```
-cp /tmp/UnsortedTestFile.bam ~/NAS
+cp /tmp/UnsortedTestFile.bam ~/NAS/TestFileCreation
 ``` 
 
 Make sure you are at that location and see the file:
 ```
-cd ~/NAS
+cd ~/NAS/TestFileCreation
 ls
 ```
 You should see `UnsortedTestFile.bam`.

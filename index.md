@@ -237,7 +237,7 @@ module load GCC/6.4.0-2.28  OpenMPI/2.1.2 SAMtools/1.7
 
 ## Usage of the compute nodes
 
-The ThinLink client connects you to our front-end. This is ONE login computer for all of you, so do NOT run computing intensive tasks there - NEVER EVER. Instead you should use our blades to run compute heavy workloads.
+The Thininc client connects you to our front-end. This is ONE login computer for all of you, so do NOT run computing intensive tasks there - NEVER EVER. Instead you should use our blades to run compute heavy workloads.
 
 Aurora uses the [SLURM system](https://lunarc-documentation.readthedocs.io/en/latest/batch_system/) to manage the job queue that distributes jobs to the compute nodes.
 

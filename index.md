@@ -1,4 +1,4 @@
-## Basic UnIX/Linux and compute cluster usage
+## Basic UNIX/Linux and compute cluster usage
 Shamit Soneji and Stefan Lang
 
 ## The LSENS platform
@@ -239,18 +239,14 @@ The ThinLink client connects you to our front-end. This is ONE login computer fo
 
 Aurora uses the [SLURM system](https://lunarc-documentation.readthedocs.io/en/latest/batch_system/) to manage the job queue that distributes jobs to the compute nodes.
 
-You have already loaded git, so use this to pull our test file which is an unsorted BAM file by using:
+Lets get a small unsorted BAM file from the temp folder to work on:
+```
+cp /tmp/UnsortedTestFile.bam ~/NAS
+``` 
 
+Make sure you are at that location and see the file:
 ```
-cd ~/NAS/TestFileCreation
-mkdir git
-cd git
-git clone git@gitlab:stefanlang/UnixCourseMaterial.git
-cd UnixCourseMaterial
-```
-
-Do:
-```
+cd ~/NAS
 ls
 ```
 To see the files there. You will see `UnsortedTestFile.bam`.

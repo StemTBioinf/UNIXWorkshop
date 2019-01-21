@@ -163,11 +163,13 @@ Every Linux/Unix installation has a basic set of tools installed that are extrem
 
 Other very commonly used programs are `ls`, `touch`, `cp`, `mkdir`, `mv`, `rm`, `echo`, `cat`, `cut`, `head`, `tail`, `grep`, `wc`, `tar`, `gzip`, `gunzip` and [here](https://www.tutorialspoint.com/unix_commands/index.html) for others.
 
-You can read up on what program does and how it works using:
+You can read up on what program does and how it works using `man <program>`, for example:
 
 ```
-man "program name"
+man whoiam
 ```
+
+Hit `q` to quit.
 
 All well programmed command line tools do also report a basic help if you use them in the wrong way - like without options at all. Try it:
 

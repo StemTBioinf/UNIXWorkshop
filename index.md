@@ -22,7 +22,7 @@ The purpose of this workshop is to get you familiar with the UNIX environment an
 
 Security is a high priority on Aurora LSENS2 and this starts with the server rejecting connections from all but the BMC network. This means you can only use LSENS2 from within the BMC network and the VPN you installed makes this possible (even from outside the BMC).
 
-So fire up your VPN client (Forticlient of Shrewsoft) and **login using your luact ID**.
+So fire up your VPN client (Forticlient of Shrewsoft) and **login using your lucat ID**.
 
 ## The Thinlinc Interface
 

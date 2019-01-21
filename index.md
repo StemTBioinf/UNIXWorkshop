@@ -13,7 +13,7 @@ The aim of today is to make sure you understand how all these components work an
 
 The purpose of this workshop is to get you familiar with the UNIX environment and using the Lunarc LSENS system for high-performance computing. By the time you are done here, you should be able to do the following:
 
-- Log into Lunarc using the ThinLinc client to enter the Lunarc desktop environment
+- Log into Lunarc using the Thinlinc client to enter the Lunarc desktop environment
 - Navigate the file structure and move files/folders around.
 - Queue up a job to run on the compute nodes (a job for example could be a sequence alignment from an NGS run)
 - More complicated bash usage with grep, awk, find, pipes and a tiny bit of bash scripting (this is optional/for further study).
@@ -22,11 +22,11 @@ The purpose of this workshop is to get you familiar with the UNIX environment an
 
 Security is a high priority on Aurora LSENS2 and this starts with the server rejecting connections from all but the BMC network. This means you can only use LSENS2 from within the BMC network and the VPN you installed makes this possible (even from outside the BMC).
 
-So fire up your VPN client (Forticlient of Shrewsoft) and login.
+So fire up your VPN client (Forticlient of Shrewsoft) and **login using your luact ID**.
 
-## The ThinLink Interface
+## The Thinlinc Interface
 
-Open up Thinlinc and login using your credentials. The server details are:
+Open up Thinlinc and login **using your lunarc credentials**. The server details are:
 
 - Server: aurora-ls2.lunarc.lu.se
 - Username: your aurora username
@@ -35,7 +35,6 @@ Open up Thinlinc and login using your credentials. The server details are:
 One time password:
 The login will prompt you for a one-time passcode which is created on your phone using the 'Pocket Pass' app. Open the app and enter the 4 digit code that you set, and then enter the 6 digit number shown. You will then be logged into Aurora (the front-end). Repeat the process if it doesn't work.
 
-
 You will find yourself in the Linux system, and the window manager is based on [MATE Desktop](https://mate-desktop.org/). It looks like most other operating systems with a menu etc. Take a moment to look around.
 
 Most scientific programs for Bioinformaticians come without a graphical user interface (GUI) and therefore the 'Terminal' is our most used tool. 'Terminal' is so important that the MATE desktop has a direct link to it in the top panel between the file explorer and the web browser icon.
@@ -43,6 +42,7 @@ Most scientific programs for Bioinformaticians come without a graphical user int
 Open a terminal.
 
 ### Basic UNIX file structure
+
 To know where you are right now do:
 ```
 pwd
@@ -374,61 +374,11 @@ Perfect - now you know how big these gtf files are and which internal structure 
 
 Get all information regarding Gapdh out of the file (using grep) and put this information in a new 'Gapdh.gtf' file in your current folder. You can log this command in a file called 'Gapdh.gtf.log' so you can remind yourself of what you did:.
 
-```cd ~/NAS/
+```
+cd ~/NAS/
 grep Gapdh ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf > Gapdh.gtf
 echo 'grep Gapdh ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf > Gapdh.gtf' > Gapdh.gtf.log
 ```
-
-## Pipes
-
-The 'For specialists' example did use a pipe to feed the output of one command into another command.
-
-Pipes are a Linux/Unix way to copy information between program calls. Pipes are used all the time in Bioinformatics and therefore the [Pipe concept needs explanation](https://en.wikipedia.org/wiki/Pipeline_(Unix\)). 
-
-You have used pipes all the time as each | and > is 'piping' information from one process to another or into a file.
-
-I do not want to go into detail here, but read up on that - it might become important for you later on.
-
-## Extract with more conditions
-
-If you would want to extract all genes from a certain chromosome area you need more than just one grep.
-In fact grep can not do this efficiently - you can/have to use awk here!
-
-**Task:** get all genes from chr4 between bp 10000002 and 19000002 and store the info in the file '~/NAS/TestFileCreation/chr4_10000002_19000002.genes.gtf'.
-
-<details><summary>How to use awk to get gene information</summary>
-<p>
-<pre><code class="bash">fname=~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf
-grep -w gene $fname | awk '{ if ( $1 == "chr4" && ($4 < 19000002 && $5 > 10000002) ) {print}}' > ~/NAS/TestFileCreation/chr4_10000002_19000002.genes.gtf
-</code></pre>
-</p>
-
-I created the $fname variable to focus on the important parts of the awk call. You could of cause also get rid of the initial grep if you like:
-
-<pre><code class="bash">fname=~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf
-awk '{ if ( ($3 == "gene" && $1 == "chr4") && ($4 < 19000002 && $5 > 10000002) ) {print}}' $fname > ~/NAS/TestFileCreation/chr4_10000002_19000002.genes.gtf
-</code></pre>
-
-Much quicker - right?
-
-</details>
-
-You are of cause not limited to the usage of [awk](https://www.gnu.org/software/gawk/manual/gawk.html#Getting-Started) you could also implement the logics using Perl, Python or even C. 
-
-In Perl the awk call would look like that:
-
-```
-perl -lane 'if ( $F[0] eq "chr4" and $F[2] eq "gene" and $F[3] < 19000002 and $F[4] > 10000002 ) { print } ' $fname > chr4_10000002_19000002.genes.gtf
-```
-It is slower in Perl than using awk, but Perl is not known for it's speed, rather for it's string manipulation capabilities and regular expressions.
-
-Have you thought about the .log file? No - do that ;-)
-
-```
-history | tail -n2 | head -n1 | perl -lane 'shift(@F); print join(" ", @F);' > ~/NAS/TestFileCreation/chr4_10000002_19000002.genes.gtf.log
-```
-
-I am sure you can think of more problems that can be solved like that.
 
 ## Find - a very useful tool!
 
@@ -437,7 +387,7 @@ The Linux/Unix find program is extremely useful if you want to apply any of the 
 Anyhow - 'find' does exactly that - it does find files for you:
 
 ```
-find ~
+find
 ```
 
 It has a lot of options, but commonly used are these: 
@@ -447,44 +397,13 @@ It has a lot of options, but commonly used are these:
 - **-maxdepth 1** stops at the first sub-folder level
 
 
-## Advanced bash scripting exercise
-
-Here I tried to come up with a really complicated task that should enable you to try more things.
-
-You need to keep on using Bash scripting to not forget.
-
-To make it very clear right at the start: I would not use a bash script to do this. Nevertheless I would recommend you to try this here and remember that you can do really complicated things using 'just' bash scripts.
-
-**TASK:**
-Please get all genes from all installed mouse gtf files in the area chr4:10000002-19000002 and put them into separate outfiles. And of cause do that in one go, not for each file separately. Do not hardcode the filenames.
-
-This is a very complex task. Use google to find some help. I have linked to all web resources I have used.
-
-Lets break this problem into smaller parts:
-- **find** selects the files we want to work on
-- **awk** selects the info we want to have
-- **separate outfiles** This is a big problem that kept me thinking quite a lot
-
-I figured that the easiest is to use [basename](https://linux.die.net/man/1/basename) (gets the name of a file as it would show in the windows explorer) and store this information in a [bash variable](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-5.html). After that we can use the variable to create infile specific outfiles.
-
-The solution I found uses a [bash for loop](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html) to iterate over all files found in the find call; stores the basename of this file in a variable and uses this variable to store the awk results. I could not make the log file work in a reasonable time frame (<2h). Even the first solution took me about 30 min.
+For example lets try and find the bam file that you made:
 
 ```
-for f in $(find ~/lunarc/genomes/mouse/ -name '*.gtf' ); do bname=`basename $f`
- awk '{ if ( ($3 ~ /gene/ && ($1 == "chr4" || $1 == "4") ) && ($4 < 19000002 && $5 > 10000002 )) { print } }' $f > ~/NAS/TestFileCreation/${bname}
- done
+find *.bam
 ```
 
-[Here](https://stackoverflow.com/questions/45880730/awk-get-information-on-input-and-output-filenames-from-file) I learned that a bash for loop might be the easiest way to deal with the "separate outfiles" problem (in the last comment).
 
-I had to use a temporary variable bname to be populated in the for loop bash line 1. Right after that call awk in bash line 2. The bash lines are separated by '\n' after the do statement of the for loop and terminated with a 'done' on the last line.
+# You made it!
 
-Do you find a way to create the .log file? I did not - and that is where **I** normally start to use another scripting language. **Perl**, Python or others. 
-
-
-
-# You have made it!
-
-Great! You have actually read and understand it all! But you still are untrained - use the Internet to get more informations - come and ask if you have a problem you can not solve on your own. 
-
-And please keep on training!
+Practise makes perfect; go through what you have done here today in your own time to consolidate what your have learnt.

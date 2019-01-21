@@ -355,64 +355,29 @@ ls -lh /projects/fs1/common/genome/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.c
 
 These folder paths get very long so we recommend you create symbolic links again:
 
-Link the /projects/fs1/common/genome/lunarc folder to your home directory.
+Link the /projects/fs1/common/genome/lunarc folder to your home directory:
 
-<details><summary>How to create this link</summary>
-<p>
-This will make the data storage path available as ~/lunarc</BR>
+```
+ln -s /projects/fs1/common/genome/lunarc/ ~/lunarc
+```
+This will make the data storage path available as ~/lunarc
 
-<pre><code class="bash">ln -s /projects/fs1/common/genome/lunarc/ ~/lunarc
-</code></pre>
-</p>
-</details>
+Now get some information about the gencode.vM19.chr_patch_hapl_scaff.annotation.gtf file using `ls`, `wc` and `head`.
 
-Now get some information about the gencode.vM19.chr_patch_hapl_scaff.annotation.gtf file using ls, wc and head.
-
-<details><summary>Simple - really</summary>
-<p>
-This will make the data storage path available as ~/lunarc</BR>
-
-<pre><code class="bash">ls -lh ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf
+```
+ls -lh ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf
 wc -l ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf
 head ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf
-</code></pre>
-</p>
-</details>
+```
 
-Perfect - now you know how big these gtf files are and which internal structure they have. It would be quite interesting to get information out of the file - or?
+Perfect - now you know how big these gtf files are and which internal structure they have. Sometimes you a want to extract information out of them quickly.
 
-Get all information regarding Gapdh out of the file (using grep) and put this information in a new 'Gapdh.gtf' file in your TestFileCreation folder. And as this is a step you might forget after some time I recommend you to store the command that created the new gtf file in the file 'Gapdh.gtf.log'.
+Get all information regarding Gapdh out of the file (using grep) and put this information in a new 'Gapdh.gtf' file in your current folder. You can log this command in a file called 'Gapdh.gtf.log' so you can remind yourself of what you did:.
 
-<details><summary>How to ...</summary>
-<p>
-<pre><code class="bash">cd ~/NAS/TestFileCreation
+```cd ~/NAS/
 grep Gapdh ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf > Gapdh.gtf
 echo 'grep Gapdh ~/lunarc/genomes/mouse/GRCm38.p6/gencode.vM19.chr_patch_hapl_scaff.annotation.gtf > Gapdh.gtf' > Gapdh.gtf.log
-</code></pre>
-</p>
-</details>
-
-<details><summary>For specialists</summary>
-<p>
-You could replace the 'echo' command in the script with this construct. 
-
-<pre><code class="bash">history | tail -n2 | head -n1 | perl -lane 'shift(@F); print join(" ", @F);' > Gapdh.gtf.log
-</code></pre>
-</p>
-</details>
-
-This construct is piping output from one command into another using the '|' sign. Hence you can inspect the different parts of the command by dissecting it part by part:
-<pre><code class="bash">history
-history | tail -n2 
-history | tail -n2 | head -n1
-history | tail -n2 | head -n1 | perl -lane 'shift(@F); print join(" ", @F);'
-</code></pre>
-</p>
-<p>
-Do not try to understand that during the course. But you can use it as some kind of black magic to get the last command into the .log file.
-</p>
-</details>
-
+```
 
 ## Pipes
 
@@ -471,11 +436,11 @@ The Linux/Unix find program is extremely useful if you want to apply any of the 
 
 Anyhow - 'find' does exactly that - it does find files for you:
 
-```{bash , eval=FALSE }
+```
 find ~
 ```
 
-It has a lot of options of which I use these: 
+It has a lot of options, but commonly used are these: 
 - **-name '*.R'** finds all R scripts in the folder and the sub-folders
 - **-type d** finds all directories (**f** files)
 - **-exec grep test {} +** applies 'grep test' to all identified files

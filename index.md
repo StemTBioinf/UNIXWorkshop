@@ -304,7 +304,9 @@ Lunarc has created an environment variable named $SNIC_TMP which allows you to p
 
 ## Additional info: SFTP - Getting data into and out of the secure area
 
-Fo this you will need to open and Terminal if you are on a Mac (Applications > Utilities > Terminal) and if you are on Windows 10 use WinSCP.
+Data can only be put in or copied out using the inbox/outbox system which has been put in place as a security feature.
+
+For this you will need to open and Terminal if you are on a Mac (Applications > Utilities > Terminal) and if you are on Windows 10 use WinSCP.
 
 For terminal users the command you need to connect is:
 

@@ -286,8 +286,6 @@ module load GCC/6.4.0-2.28  OpenMPI/2.1.2 SAMtools/1.7
 samtools sort -T $SNIC_TMP UnsortedTestFile.bam > SortedTestFile.bam 
 ```
 
-
-
 Change the file to replace `username` with yout actual username and then save the file. Now try to queue it up using sbatch:
 
 ```

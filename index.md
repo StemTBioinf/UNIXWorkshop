@@ -249,7 +249,7 @@ Make sure you are at that location and see the file:
 cd ~/NAS
 ls
 ```
-To see the files there. You will see `UnsortedTestFile.bam`.
+You should see `UnsortedTestFile.bam`.
 
 ### Sorting a BAM file using the blades
 
@@ -257,8 +257,18 @@ When certain jobs are run such as sequence alignment they create temporary files
 
 To send a job to the queue we need to make a SLURM script that tells the blades which programs to load and what to do on which files. In our example we are going to sort a small BAM file. To do this we will use the samtools program you learned how to load earlier.
 
-Firstly, open an editor and insert the following lines:
+First, copy and example script from the temp folder:
+```
+cp /tmp/sortbam.sh .
+```
 
+Then open the script in an editor by calling:
+
+```
+gedit sortbam.sh
+```
+
+You will see the following:
 
 ```
 #! /bin/bash
@@ -273,7 +283,10 @@ Firstly, open an editor and insert the following lines:
 module load GCC/6.4.0-2.28  OpenMPI/2.1.2 SAMtools/1.7
 samtools sort -T $SNIC_TMP UnsortedTestFile.bam > SortedTestFile.bam 
 ```
-Save this file as `sortbam.sh` in the same folder as where you have your bam file. Now try to queue it up using sbatch:
+
+
+
+Change the file to replace `username` with yout actual username and then save the file. Now try to queue it up using sbatch:
 
 ```
 sbatch sortbam.sh

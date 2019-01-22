@@ -418,4 +418,4 @@ find *.bam
 
 # You made it!
 
-Practise makes perfect; go through what you have done here today in your own time to consolidate what your have learnt. We will send out a link to a Piazza course for you to get some harder exercises so you can tackle them online together.
+Practice makes perfect; go through what you have done here today in your own time to consolidate what your have learnt. We will send out a link to a Piazza course for you to get some harder exercises so you can tackle them online together.

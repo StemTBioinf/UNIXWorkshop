@@ -1,5 +1,5 @@
 ## Basic UNIX/Linux and compute cluster usage
-Shamit Soneji and Stefan Lang
+**Shamit Soneji and Stefan Lang**
 
 ## The LSENS platform
 The platform is composed of three parts:
